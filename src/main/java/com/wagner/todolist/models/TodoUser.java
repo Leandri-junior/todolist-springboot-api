@@ -9,21 +9,16 @@ import java.util.Objects;
 
 @Entity
 @Table(name= TodoUser.TABLE_NAME)
-public class TodoUser {
+public class TodoUser extends Log {
 
     public TodoUser(){
 
     }
-    public TodoUser(Long id, String username, String password) {
-        this.id = id;
+    public TodoUser( String username, String password) {
         this.username = username;
         this.password = password;
     }
     public static final String TABLE_NAME = "todo_user";
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @Column(name="username", length = 100, nullable = false, unique = true)
     private String username;
@@ -42,14 +37,6 @@ public class TodoUser {
 
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getUsername() {
