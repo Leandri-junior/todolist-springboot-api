@@ -6,13 +6,9 @@ import java.util.Objects;
 
 @Entity
 @Table(name = Task.TABLE_NAME)
-public class Task {
+public class Task extends Log{
     public static final String TABLE_NAME = "task";
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true)
-    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false, updatable = false)
@@ -24,18 +20,9 @@ public class Task {
     public Task() {
 
     }
-    public Task(Long id, TodoUser user, String description) {
-        this.id = id;
+    public Task(TodoUser user, String description) {
         this.user = user;
         this.description = description;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public TodoUser getUser() {
