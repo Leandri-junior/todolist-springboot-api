@@ -12,4 +12,9 @@ public interface UserRepository extends JpaRepository<TodoUser, Long> {
     @Query("UPDATE TodoUser u SET u.status = true WHERE u.id = :id")
     void deleteStatus(Long id);
 
+    @Modifying
+    @Query("SELECT TodoUser FROM TodoUser u WHERE u.username ilike '%:username%'")
+    public TodoUser FindByNameContains(String username);
+
+
 }

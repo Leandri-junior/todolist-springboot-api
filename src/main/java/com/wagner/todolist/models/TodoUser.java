@@ -1,5 +1,6 @@
 package com.wagner.todolist.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
@@ -30,7 +31,7 @@ public class TodoUser extends AbstractLog {
     @OneToMany(mappedBy = "user")
     private List<Task> tasks = new ArrayList<Task>();
 
-
+    @JsonIgnore
     public List<Task> getTasks() {
         return tasks;
     }

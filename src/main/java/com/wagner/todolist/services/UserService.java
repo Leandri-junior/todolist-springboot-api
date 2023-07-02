@@ -23,6 +23,13 @@ public class UserService {
         ));
     }
 
+    public TodoUser FindByNameContains(String username){
+        Optional<TodoUser> user = Optional.ofNullable(this.userRepository.FindByNameContains(username));
+        return user.orElseThrow(() -> new RuntimeException(
+                "User not found! username:" + username + ", Type:" + TodoUser.class.getName()
+        ));
+    }
+
     @Transactional
     public TodoUser create(TodoUser obj) {
         obj = this.userRepository.save(obj);
