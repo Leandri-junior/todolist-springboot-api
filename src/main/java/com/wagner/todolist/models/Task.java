@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = Task.TABLE_NAME)
-public class Task extends Log{
+public class Task extends AbstractLog {
     public static final String TABLE_NAME = "task";
 
 

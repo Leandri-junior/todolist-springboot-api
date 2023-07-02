@@ -9,7 +9,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name= TodoUser.TABLE_NAME)
-public class TodoUser extends Log {
+public class TodoUser extends AbstractLog {
 
     public TodoUser(){
 

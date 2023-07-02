@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @MappedSuperclass
-public abstract class Log {
+public abstract class AbstractLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,10 +34,10 @@ public abstract class Log {
     @JoinColumn(name = "status", nullable = false, updatable = true, columnDefinition = "true")
     private Boolean status;
 
-    public Log() {
+    public AbstractLog() {
 
     }
-    private Log(Long id, Date createdDate, Date lastModifiedDate){
+    private AbstractLog(Long id, Date createdDate, Date lastModifiedDate){
         this.id = id;
         this.createdDate = createdDate;
         this.lastModifiedDate = lastModifiedDate;
@@ -77,7 +77,7 @@ public abstract class Log {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Log log)) return false;
+        if (!(o instanceof AbstractLog log)) return false;
         return Objects.equals(getId(), log.getId()) && Objects.equals(getCreatedDate(), log.getCreatedDate()) && Objects.equals(getLastModifiedDate(), log.getLastModifiedDate());
     }
 
