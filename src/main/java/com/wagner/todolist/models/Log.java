@@ -16,9 +16,11 @@ public abstract class Log {
     private Long id;
 
     @CreatedDate
+    @JoinColumn(name = "createddate", nullable = false, updatable = true)
     private Date createdDate;
 
     @LastModifiedDate
+    @JoinColumn(name = "lastmodifieddate", nullable = false, updatable = true)
     private Date lastModifiedDate;
 
 
