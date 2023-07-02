@@ -43,6 +43,7 @@ public class UserService {
     public void delete(TodoUser obj){
         TodoUser newObj = findById(obj.getId());
         newObj.setStatus(false);
+        this.userRepository.save(newObj);
     }
 
 }
