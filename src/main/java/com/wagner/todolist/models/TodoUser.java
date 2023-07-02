@@ -2,8 +2,6 @@ package com.wagner.todolist.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
-import org.hibernate.annotations.Comment;
 
 import java.util.ArrayList;
 import java.util.List;
