@@ -29,6 +29,8 @@ public abstract class Log {
             status = true;
         }
     }
+
+
     @JoinColumn(name = "status", nullable = false, updatable = true, columnDefinition = "true")
     private Boolean status;
 
@@ -65,6 +67,13 @@ public abstract class Log {
         this.lastModifiedDate = lastModifiedDate;
     }
 
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
