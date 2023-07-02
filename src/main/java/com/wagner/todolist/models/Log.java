@@ -23,6 +23,14 @@ public abstract class Log {
     @JoinColumn(name = "lastmodifieddate", nullable = false, updatable = true)
     private Date lastModifiedDate;
 
+    @PrePersist
+    public void prePersist(){
+        if (status == null){
+            status = true;
+        }
+    }
+    @JoinColumn(name = "status", nullable = false, updatable = true, columnDefinition = "true")
+    private Boolean status;
 
     public Log() {
 
