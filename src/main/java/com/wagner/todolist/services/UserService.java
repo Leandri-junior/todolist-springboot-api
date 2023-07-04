@@ -3,6 +3,7 @@ package com.wagner.todolist.services;
 import com.wagner.todolist.models.TodoUser;
 import com.wagner.todolist.repositories.TaskRepository;
 import com.wagner.todolist.repositories.UserRepository;
+import jakarta.annotation.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,10 +40,14 @@ public class UserService {
     @Transactional
     public TodoUser update(TodoUser obj){
         TodoUser newObj = findById(obj.getId());
-        newObj.setPassword(obj.getPassword());
-
+        if (obj.getUsername() != null) {
+            newObj.setUsername(obj.getUsername());
+        } else if (obj.getPassword() != null) {
+            newObj.setPassword(obj.getPassword());
+        }
         return this.userRepository.save(newObj);
     }
+
 
     public void delete(TodoUser obj){
         TodoUser newObj = findById(obj.getId());

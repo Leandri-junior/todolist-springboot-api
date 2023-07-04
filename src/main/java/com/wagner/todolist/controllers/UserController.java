@@ -21,8 +21,13 @@ public class UserController {
     }
     @PostMapping("/create")
     public ResponseEntity<TodoUser> create(@RequestBody TodoUser obj){
-        System.out.println(obj);
         TodoUser userObj = this.userService.create(obj);
+        return ResponseEntity.ok().body(userObj);
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<TodoUser> update(@RequestBody TodoUser obj){
+        TodoUser userObj = this.userService.update(obj);
         return ResponseEntity.ok().body(userObj);
     }
 
