@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.Objects;
 
@@ -19,6 +22,7 @@ public abstract class AbstractLog {
     @JoinColumn(name = "createddate", nullable = false, updatable = true)
     private Date createdDate;
 
+
     @LastModifiedDate
     @JoinColumn(name = "lastmodifieddate", nullable = false, updatable = true)
     private Date lastModifiedDate;
@@ -27,6 +31,16 @@ public abstract class AbstractLog {
     public void prePersist(){
         if (status == null){
             status = true;
+        }
+        if (lastModifiedDate == null){
+            LocalDate localDate = LocalDate.now();
+            Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            lastModifiedDate = date;
+        }
+        if (createdDate == null){
+            LocalDate localDate = LocalDate.now();
+            Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            createdDate = date;
         }
     }
 
