@@ -30,5 +30,11 @@ public class UserController {
         TodoUser userObj = this.userService.update(obj);
         return ResponseEntity.ok().body(userObj);
     }
+    @DeleteMapping("/remove/{id}")
+    public ResponseEntity<TodoUser> delete(@PathVariable Long id){
+        TodoUser userObj = this.userService.findById(id);
+        this.userService.delete(userObj);
+        return ResponseEntity.noContent().build();
+    }
 
 }
